@@ -52,14 +52,12 @@ function reset(){
 
 //adicionando em um historico todos tempos salvos
 let saves = document.getElementById("saved")
+let numbers = document.querySelector(".numbers")
 function addTimeSaved(){
+
     saves.innerHTML += `
     <p class="timeSaved">
-        ${m < 10 ? "0" + m-1: m}
-        :
-        ${s < 10 ? "0" + s-1: s}
-        :        
-        ${ms < 10 ? "0" +ms : ms}
+       ${numbers.innerHTML}
     </p>`
     saves.scrollTop = saves.scrollHeight
 }
