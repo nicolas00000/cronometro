@@ -6,6 +6,7 @@ let miliSegundos = document.getElementById("ms")
 let segundos = document.getElementById("s")
 let minutos = document.getElementById("m")
 
+
 function run(){
     ms === 100 ?  maisSegundo()   : ms < 10 ? miliSegundos.innerHTML = "0" + ms++ : miliSegundos.innerHTML = ms++
 }
@@ -32,17 +33,39 @@ function play(){
     block = false
 }
 
+//parar cronometro
 function stop(){
     block = true
     clearInterval(control)
 }
 
+
 function reset(){
-    stop()
+    clear()
     m = 1
     s = 1
     ms = 0
     segundos.innerHTML = "00"
     minutos.innerHTML = "00"
     miliSegundos.innerHTML = "00"
+}
+
+//adicionando em um historico todos tempos salvos
+let saves = document.getElementById("saved")
+function addTimeSaved(){
+    saves.innerHTML += `
+    <p class="timeSaved">
+        ${m < 10 ? "0" + m-1: m}
+        :
+        ${s < 10 ? "0" + s-1: s}
+        :        
+        ${ms < 10 ? "0" +ms : ms}
+    </p>`
+    saves.scrollTop = saves.scrollHeight
+}
+
+//apagar historico
+function clear(){
+    saves.innerHTML = ""
+    stop()
 }
